@@ -93,11 +93,26 @@
         }
     }
 
-    &__text {
+    &__text,
+    &__text-select {
         color: var(--white);
         text-align: center;
         font-size: 1.3rem;
         font-family: trebuc;
+    }
+
+    &__text {
+        &.active {
+            display: none;
+        }
+    }
+
+    &__text-select {
+        display: none;
+
+        &.active {
+            display: block;
+        }
     }
 
     &__btn {

@@ -1,68 +1,28 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { MouseEvent, useContext } from 'react';
 import { getClickHandler } from '../utils/getStylesElem';
-import { foodValud } from '../ts/enum';
+import { CardContext } from '../store/card-context';
+import { getRemoveClass } from '../utils/utils';
+import { setTextSelect } from '../utils/getValueFood';
 
 export const BtnBuy: React.FC<{ value: string }> = (props) => {
-    const [state, setState] = useState({
-        text: 'Чего сидишь? Порадуй котэ',
-        valid: true,
-    });
+    const { text, btnClick } = useContext(CardContext);
 
     const setFunctionClick = (e: MouseEvent) => {
+        getRemoveClass();
         getClickHandler(e);
-        getValidBtn(e);
+        btnClick(e);
     };
 
-    const getValidBtn = (e: MouseEvent) => {
-        const { target } = e;
-        getValidText();
-        setState((current) => {
-            return {
-                ...current,
-                text: 'Печень утки разварная с артишоками.',
-                valid: false,
-            };
-        });
-    };
+    return (
+        <ul className="cats__inner">
+            <li className="cats__text">
+                {text}
+                <button className="cats__btn" type="button" onClick={(e) => setFunctionClick(e)}>
+                    Купи
+                </button>
+            </li>
 
-    const getValidText = () => {
-        const textElems = document.querySelectorAll('.cats__text');
-        Array(...textElems).map((value) => {
-            if ((value as HTMLElement).dataset.valid === 'false') {
-                const boxElem = value.closest('.cats__item');
-                value.remove();
-                if (boxElem) {
-                    boxElem.insertAdjacentHTML(
-                        'beforeend',
-                        `
-                        <p class="cats__text">
-                        ${state.text},
-                        <button class="cats__btn"  type="button"
-                        >Купи</button>
-                    </p>
-                    `
-                    );
-                }
-            }
-        });
-    };
-
-    return state.valid ? (
-        <p className="cats__text">
-            {state.text},
-            <button
-                className="cats__btn"
-                type="button"
-                onClick={(e) => setFunctionClick(e)}
-                data-valid={state.valid}
-                data-food={props.value}
-            >
-                Купи
-            </button>
-        </p>
-    ) : (
-        <p className="cats__text" data-valid={state.valid}>
-            {state.text}
-        </p>
+            <li className="cats__text-select">{setTextSelect(props.value)}</li>
+        </ul>
     );
 };

@@ -31,3 +31,14 @@ export const getValueFood = (params: string): IData => {
         weight: '',
     };
 };
+
+export const setTextSelect = (params: string) => {
+    if (params === foodValud.foieGras) {
+        return 'Печень утки разварная с артишоками.';
+    } else if (params === foodValud.fish) {
+        return 'Головы щучьи с чесноком да свежайшая сёмгушка.';
+    } else if (params === foodValud.chicken) {
+        return 'Филе из цыплят с трюфелями в бульоне.';
+    }
+    return '';
+};

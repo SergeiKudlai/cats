@@ -1,10 +1,14 @@
 import { MouseEvent } from 'react';
+import { getRemoveClass } from './utils';
+import { getBtnAddClass } from './utils';
 
 export function getClickHandler(e: MouseEvent) {
     const { target } = e;
     getRemoveStyle();
+    getRemoveClass();
 
     const box = (target as HTMLElement).closest('.cats__item');
+    getBtnAddClass(box);
     box?.classList.add('active');
     const boxWeight = box?.querySelector('.card__weight');
     boxWeight?.classList.add('active');
