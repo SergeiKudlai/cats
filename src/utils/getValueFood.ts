@@ -42,3 +42,14 @@ export const setTextSelect = (params: string) => {
     }
     return '';
 };
+
+export const setTextDisabled = (params: string) => {
+    if (params === foodValud.foieGras) {
+        return 'Печалька, с фуа-гра закончился.';
+    } else if (params === foodValud.fish) {
+        return 'Печалька, с рыбой закончился.';
+    } else if (params === foodValud.chicken) {
+        return 'Печалька, с курой закончился.';
+    }
+    return '';
+};
