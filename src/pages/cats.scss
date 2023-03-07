@@ -84,11 +84,48 @@
             &::after {
                 background-color: var(--blue-hover);
             }
+
+            .card {
+                cursor: pointer;
+                border-color: var(--blue-hover);
+
+                &__weight {
+                    background-color: var(--blue-hover);
+                }
+            }
         }
 
         &.active {
             &::after {
                 background-color: var(--pink-100);
+            }
+
+            .card {
+                border-color: var(--pink-100);
+
+                &__weight {
+                    background-color: var(--pink-100);
+                }
+            }
+
+            &:not(.hover) {
+                &:hover {
+                    &::after {
+                        background-color: var(--pink-hover);
+                    }
+
+                    .card {
+                        border-color: var(--pink-hover);
+
+                        &__text {
+                            color: var(--pink-hover);
+                        }
+
+                        &__weight {
+                            background-color: var(--pink-hover);
+                        }
+                    }
+                }
             }
         }
     }

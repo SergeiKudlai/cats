@@ -1,14 +1,12 @@
 import React, { MouseEvent, useContext } from 'react';
 import { getClickHandler } from '../utils/getStylesElem';
 import { CardContext } from '../store/card-context';
-import { getRemoveClass } from '../utils/utils';
 import { setTextSelect } from '../utils/getValueFood';
 
 export const BtnBuy: React.FC<{ value: string }> = (props) => {
     const { text, btnClick } = useContext(CardContext);
 
     const setFunctionClick = (e: MouseEvent) => {
-        getRemoveClass();
         getClickHandler(e);
         btnClick(e);
     };

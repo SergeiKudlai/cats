@@ -46,14 +46,10 @@
         }
     }
 
-    &:hover {
-        cursor: pointer;
-        border-color: var(--blue-hover);
-    }
-
     &__text {
         color: var(--gray-100);
         font-weight: 400;
+        transition: color 0.5s ease-in-out;
     }
 
     &__title {
